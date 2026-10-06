@@ -1,0 +1,902 @@
+/* =========================================================
+   Kopinako — Home stylesheet
+   Palet: kedai kopi kekinian — kertas krem hangat, ink espresso,
+   dan dua aksen berani (jingga matahari terbenam + magenta) yang
+   dipakai konsisten sebagai identitas brand.
+   ========================================================= */
+
+:root {
+  --kn-paper: #fff7ec;
+  --kn-cream: #ffefd8;
+  --kn-ink: #1c0f06;
+  --kn-ink-soft: #6e5240;
+  --kn-orange: #ff5a1f;
+  --kn-orange-dark: #db4108;
+  --kn-magenta: #ff2f7e;
+  --kn-lime: #d8ff4f;
+  --kn-lime-ink: #2c3300;
+  --kn-line: rgba(28, 15, 6, 0.14);
+  --kn-shadow: 0 22px 48px -24px rgba(219, 65, 8, 0.45);
+  --kn-espresso: #1c0f06;
+  --radius-sm: 6px;
+  --radius-md: 18px;
+  --radius-pill: 999px;
+}
+
+[data-bs-theme="dark"] {
+  --kn-paper: #18100a;
+  --kn-cream: #241609;
+  --kn-ink: #fbede1;
+  --kn-ink-soft: #d6bda9;
+  --kn-orange: #ff7a45;
+  --kn-orange-dark: #ff9666;
+  --kn-magenta: #ff5c9b;
+  --kn-lime: #e2ff7a;
+  --kn-lime-ink: #1c2400;
+  --kn-line: rgba(251, 237, 225, 0.16);
+  --kn-shadow: 0 22px 48px -22px rgba(0, 0, 0, 0.65);
+}
+
+html, body {
+  background-color: var(--kn-paper);
+  color: var(--kn-ink);
+}
+
+body {
+  font-family: "Plus Jakarta Sans", "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-display {
+  font-family: "Unbounded", "Plus Jakarta Sans", sans-serif;
+}
+
+a {
+  color: var(--kn-orange-dark);
+}
+
+::selection {
+  background: var(--kn-orange);
+  color: #fff7ec;
+}
+
+/* ---------- Navbar ---------- */
+.kn-navbar {
+  background-color: var(--kn-paper);
+  border-bottom: 1px solid var(--kn-line);
+  transition: box-shadow 0.2s ease;
+}
+
+.kn-navbar.kn-scrolled {
+  box-shadow: 0 8px 24px -18px rgba(28, 15, 6, 0.35);
+}
+
+.kn-brand {
+  font-family: "Unbounded", sans-serif;
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: var(--kn-ink);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.kn-brand img {
+  width: 36px;
+  height: 36px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--kn-line);
+}
+
+.kn-brand-mark {
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: linear-gradient(150deg, var(--kn-orange) 0%, var(--kn-magenta) 100%);
+  color: #fff7ec;
+  font-family: "Unbounded", sans-serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.kn-navbar .nav-link {
+  color: var(--kn-ink-soft);
+  font-weight: 600;
+  padding-inline: 0.9rem;
+}
+
+.kn-navbar .nav-link:hover,
+.kn-navbar .nav-link.active {
+  color: var(--kn-orange-dark);
+}
+
+.btn-caramel {
+  background-color: var(--kn-orange);
+  border-color: var(--kn-orange);
+  color: #fff7ec;
+  font-weight: 700;
+  border-radius: var(--radius-pill);
+}
+
+.btn-caramel:hover {
+  background-color: var(--kn-orange-dark);
+  border-color: var(--kn-orange-dark);
+  color: #fff7ec;
+}
+
+.btn-outline-ink {
+  border: 1.5px solid var(--kn-line);
+  color: var(--kn-ink);
+  font-weight: 700;
+  border-radius: var(--radius-pill);
+}
+
+.btn-outline-ink:hover {
+  border-color: var(--kn-ink);
+  color: var(--kn-ink);
+  background-color: transparent;
+}
+
+/* ---------- Hero carousel ---------- */
+.kn-hero {
+  position: relative;
+}
+
+.kn-hero .carousel-item {
+  height: min(74vh, 660px);
+  min-height: 440px;
+}
+
+.kn-hero-slide {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: var(--kn-espresso);
+}
+
+.kn-hero-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.8;
+}
+
+.kn-hero-fallback-bg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background:
+    radial-gradient(circle at 12% 22%, rgba(255, 90, 31, 0.55), transparent 45%),
+    radial-gradient(circle at 88% 12%, rgba(255, 47, 126, 0.45), transparent 42%),
+    radial-gradient(circle at 75% 90%, rgba(216, 255, 79, 0.16), transparent 55%),
+    linear-gradient(160deg, #1c0f06 0%, #2c1608 55%, #1c0f06 100%);
+}
+
+.kn-hero-fallback-mark {
+  position: absolute;
+  right: -4vw;
+  bottom: -8vh;
+  font-family: "Unbounded", sans-serif;
+  font-weight: 700;
+  font-size: clamp(6rem, 22vw, 16rem);
+  color: rgba(255, 247, 236, 0.07);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+.kn-hero-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(0deg, rgba(14, 7, 3, 0.92) 0%, rgba(14, 7, 3, 0.4) 48%, rgba(14, 7, 3, 0.08) 72%);
+}
+
+.kn-hero-caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: clamp(1.5rem, 5vw, 3.75rem);
+  color: #fff7ec;
+}
+
+.kn-hero-caption .kn-hero-tag {
+  display: inline-block;
+  background-color: var(--kn-magenta);
+  color: #fff7ec;
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 0.25rem 0.8rem;
+  border-radius: var(--radius-pill);
+  margin-bottom: 0.85rem;
+}
+
+.kn-hero-caption h2 {
+  font-family: "Unbounded", sans-serif;
+  font-weight: 700;
+  font-size: clamp(2rem, 5vw, 3.75rem);
+  line-height: 1.08;
+  max-width: 18ch;
+  margin-bottom: 0.65rem;
+}
+
+.kn-hero-caption p {
+  max-width: 46ch;
+  font-size: 1.05rem;
+  color: rgba(255, 247, 236, 0.88);
+  margin-bottom: 1.2rem;
+}
+
+.kn-hero .carousel-indicators {
+  bottom: 0;
+  margin-bottom: 0;
+  padding: 0 clamp(1.5rem, 5vw, 3.75rem) 1.5rem;
+  justify-content: flex-start;
+  gap: 0.4rem;
+}
+
+.kn-hero .carousel-indicators [data-bs-target] {
+  width: 28px;
+  height: 4px;
+  border-radius: 2px;
+  background-color: rgba(255, 247, 236, 0.4);
+  border: 0;
+  opacity: 1;
+}
+
+.kn-hero .carousel-indicators .active {
+  background-color: var(--kn-orange);
+}
+
+.kn-hero .carousel-control-prev,
+.kn-hero .carousel-control-next {
+  width: 4.5rem;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.kn-hero:hover .carousel-control-prev,
+.kn-hero:hover .carousel-control-next {
+  opacity: 0.9;
+}
+
+/* ---------- Marquee strip ---------- */
+.kn-marquee {
+  background-color: var(--kn-espresso);
+  color: var(--kn-cream);
+  overflow: hidden;
+  border-bottom: 1px solid var(--kn-line);
+}
+
+.kn-marquee-track {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.4rem 0.5rem;
+  padding: 0.85rem 1.25rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.kn-marquee-track span {
+  font-family: "Unbounded", sans-serif;
+  font-weight: 600;
+  font-size: 0.82rem;
+  white-space: nowrap;
+}
+
+.kn-marquee-track span.kn-marquee-accent {
+  color: var(--kn-lime);
+}
+
+.kn-marquee-track .kn-marquee-dot {
+  color: rgba(255, 247, 236, 0.35);
+}
+
+/* ---------- Kategori chips ---------- */
+.kn-kategori {
+  border-bottom: 1px solid var(--kn-line);
+  background-color: var(--kn-paper);
+}
+
+.kn-chip-row {
+  display: flex;
+  gap: 0.6rem;
+  overflow-x: auto;
+  padding-bottom: 0.35rem;
+  scrollbar-width: thin;
+}
+
+.kn-chip {
+  flex: 0 0 auto;
+  border: 1.5px solid var(--kn-line);
+  background-color: var(--kn-cream);
+  color: var(--kn-ink-soft);
+  font-weight: 700;
+  font-size: 0.92rem;
+  padding: 0.5rem 1.1rem;
+  border-radius: var(--radius-pill);
+  white-space: nowrap;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.kn-chip:hover {
+  border-color: var(--kn-orange);
+  color: var(--kn-orange-dark);
+}
+
+.kn-chip.active {
+  background-color: var(--kn-orange);
+  border-color: var(--kn-orange);
+  color: #fff7ec;
+}
+
+/* ---------- Menu / album ---------- */
+.kn-section-title {
+  font-family: "Unbounded", sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  margin-bottom: 0.25rem;
+}
+
+.kn-section-sub {
+  color: var(--kn-ink-soft);
+  max-width: 60ch;
+}
+
+.kn-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(235px, 1fr));
+  gap: 1.6rem 1.25rem;
+}
+
+.kn-card {
+  background-color: var(--kn-cream);
+  border: 1px solid var(--kn-line);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+
+.kn-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--kn-shadow);
+  border-color: var(--kn-orange);
+}
+
+.kn-card-media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  background-color: var(--kn-espresso);
+  overflow: hidden;
+}
+
+.kn-card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.kn-card-media-fallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Unbounded", sans-serif;
+  font-weight: 700;
+  font-size: 2.75rem;
+  color: rgba(255, 247, 236, 0.92);
+  background: linear-gradient(150deg, var(--kn-orange) 0%, var(--kn-magenta) 100%);
+}
+
+.kn-price-tag {
+  position: absolute;
+  top: 0.75rem;
+  left: 0;
+  background-color: var(--kn-orange);
+  color: #fff7ec;
+  font-family: "Unbounded", sans-serif;
+  font-weight: 600;
+  font-size: 0.82rem;
+  padding: 0.32rem 0.75rem 0.32rem 0.65rem;
+  clip-path: polygon(0 0, 100% 0, 88% 100%, 0% 100%);
+}
+
+.kn-stock-flag {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.22rem 0.6rem;
+  border-radius: var(--radius-pill);
+  background-color: var(--kn-lime);
+  color: var(--kn-lime-ink);
+}
+
+.kn-stock-flag.habis {
+  background-color: rgba(28, 15, 6, 0.82);
+  color: #fff7ec;
+}
+
+.kn-card-body {
+  padding: 1rem 1.1rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.kn-card-kategori {
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--kn-magenta);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.kn-card-title {
+  font-family: "Unbounded", sans-serif;
+  font-weight: 600;
+  font-size: 1.02rem;
+  margin: 0;
+  color: var(--kn-ink);
+}
+
+.kn-card-desc {
+  font-size: 0.9rem;
+  color: var(--kn-ink-soft);
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.kn-card-footer {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  padding-top: 0.4rem;
+}
+
+.kn-card-footer form {
+  margin: 0;
+}
+
+.kn-stok-text {
+  font-size: 0.82rem;
+  color: var(--kn-ink-soft);
+}
+
+.btn-wa {
+  background-color: var(--kn-espresso);
+  border-color: var(--kn-espresso);
+  color: #fff7ec;
+  font-weight: 700;
+  font-size: 0.85rem;
+  border-radius: var(--radius-pill);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  white-space: nowrap;
+}
+
+.btn-wa:hover {
+  background-color: var(--kn-orange-dark);
+  border-color: var(--kn-orange-dark);
+  color: #fff7ec;
+}
+
+.btn-wa[aria-disabled="true"] {
+  background-color: rgba(28, 15, 6, 0.16);
+  border-color: transparent;
+  color: var(--kn-ink-soft);
+  pointer-events: none;
+}
+
+/* ---------- Keranjang (cart) ---------- */
+.kn-cart-wrap {
+  border: 1px solid var(--kn-line);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background-color: var(--kn-cream);
+}
+
+.kn-cart-table {
+  margin-bottom: 0;
+  color: var(--kn-ink);
+}
+
+.kn-cart-table thead {
+  background-color: rgba(255, 90, 31, 0.1);
+}
+
+.kn-cart-table th,
+.kn-cart-table td {
+  border-color: var(--kn-line);
+  vertical-align: middle;
+}
+
+/* ---------- Toast notifikasi ---------- */
+.kn-toast {
+  position: fixed;
+  left: 1rem;
+  bottom: 1.5rem;
+  transform: translateY(16px);
+  opacity: 0;
+  transition: transform 0.22s ease, opacity 0.22s ease;
+  background-color: var(--kn-espresso);
+  border: 1px solid rgba(255, 247, 236, 0.18);
+  color: #fff7ec;
+  border-radius: var(--radius-md);
+  padding: 0.9rem 1.1rem;
+  box-shadow: var(--kn-shadow);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem 1rem;
+  max-width: min(92vw, 380px);
+}
+
+.kn-toast-show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.kn-toast-msg {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.kn-toast-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+
+.kn-toast-error {
+  background-color: #7a2416;
+}
+
+.kn-toast .btn-outline-ink {
+  border-color: rgba(255, 247, 236, 0.4);
+  color: #fff7ec;
+}
+
+.kn-toast .btn-outline-ink:hover {
+  border-color: #fff7ec;
+  color: #fff7ec;
+}
+
+/* ---------- Empty state ---------- */
+.kn-empty {
+  border: 1.5px dashed var(--kn-orange);
+  border-radius: var(--radius-md);
+  padding: clamp(2rem, 6vw, 3.5rem);
+  text-align: center;
+  color: var(--kn-ink-soft);
+  background-color: var(--kn-cream);
+}
+
+.kn-empty h3 {
+  font-family: "Unbounded", sans-serif;
+  font-weight: 700;
+  color: var(--kn-ink);
+  margin-bottom: 0.5rem;
+}
+
+/* ---------- Footer ---------- */
+.kn-footer {
+  background-color: var(--kn-espresso);
+  color: rgba(255, 247, 236, 0.82);
+  margin-top: 4rem;
+}
+
+.kn-footer .kn-brand {
+  color: #fff7ec;
+}
+
+.kn-footer a {
+  color: rgba(255, 247, 236, 0.82);
+  text-decoration: none;
+}
+
+.kn-footer a:hover {
+  color: var(--kn-orange);
+}
+
+.kn-footer hr {
+  border-color: rgba(255, 247, 236, 0.16);
+}
+
+.kn-footer .kn-foot-heading {
+  font-family: "Unbounded", sans-serif;
+  font-weight: 600;
+  color: #fff7ec;
+  margin-bottom: 0.75rem;
+  font-size: 0.9rem;
+}
+
+/* ---------- Theme toggle (dipertahankan dari halaman lain) ---------- */
+.btn-bd-brand {
+  --bs-btn-font-weight: 700;
+  --bs-btn-color: #fff7ec;
+  --bs-btn-bg: var(--kn-orange);
+  --bs-btn-border-color: var(--kn-orange);
+  --bs-btn-hover-color: #fff7ec;
+  --bs-btn-hover-bg: var(--kn-orange-dark);
+  --bs-btn-hover-border-color: var(--kn-orange-dark);
+  --bs-btn-focus-shadow-rgb: 255, 90, 31;
+  --bs-btn-active-bg: var(--kn-orange-dark);
+  --bs-btn-active-border-color: var(--kn-orange-dark);
+}
+
+.bd-mode-toggle {
+  z-index: 1500;
+}
+
+.bd-mode-toggle .bi {
+  width: 1em;
+  height: 1em;
+}
+
+.bd-mode-toggle .dropdown-menu .active .bi {
+  display: block !important;
+}
+
+/* ---------- Aksesibilitas & gerak ---------- */
+:focus-visible {
+  outline: 2px solid var(--kn-orange);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kn-card,
+  .kn-hero .carousel-control-prev,
+  .kn-hero .carousel-control-next {
+    transition: none;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .kn-hero .carousel-item {
+    height: 62vh;
+    min-height: 400px;
+  }
+}
+
+/* ---------- Detail produk ---------- */
+.kn-breadcrumb {
+  font-size: 0.85rem;
+}
+
+.kn-breadcrumb .breadcrumb-item + .breadcrumb-item::before {
+  color: var(--kn-ink-soft);
+}
+
+.kn-breadcrumb .breadcrumb-item.active,
+.kn-breadcrumb .breadcrumb-item {
+  color: var(--kn-ink-soft);
+}
+
+.kn-detail-media {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background-color: var(--kn-espresso);
+  border: 1px solid var(--kn-line);
+}
+
+.kn-detail-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.kn-detail-media .kn-card-media-fallback {
+  font-size: 6rem;
+}
+
+.kn-detail-title {
+  font-family: "Unbounded", sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
+  margin: 0.4rem 0 0.5rem;
+  color: var(--kn-ink);
+}
+
+.kn-detail-price {
+  font-family: "Unbounded", sans-serif;
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: var(--kn-orange-dark);
+  margin-bottom: 1.1rem;
+}
+
+.kn-detail-meta {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.35rem 1.25rem;
+  padding: 0.85rem 0;
+  margin: 0 0 1.1rem;
+  border-top: 1px solid var(--kn-line);
+  border-bottom: 1px solid var(--kn-line);
+  font-size: 0.92rem;
+}
+
+.kn-detail-meta dt {
+  color: var(--kn-ink-soft);
+  font-weight: 600;
+}
+
+.kn-detail-meta dd {
+  margin: 0;
+}
+
+.kn-detail-sub {
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--kn-ink-soft);
+  margin-bottom: 0.4rem;
+}
+
+.kn-detail-desc {
+  color: var(--kn-ink);
+  line-height: 1.65;
+  margin-bottom: 1.5rem;
+}
+
+.kn-detail-form {
+  display: flex;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.kn-qty {
+  display: inline-flex;
+  align-items: stretch;
+  border: 1px solid var(--kn-line);
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+  background-color: var(--kn-cream);
+}
+
+.kn-qty .form-control {
+  width: 4rem;
+  border: 0;
+  border-radius: 0;
+  text-align: center;
+  background: transparent;
+  color: var(--kn-ink);
+  box-shadow: none;
+  -moz-appearance: textfield;
+}
+
+.kn-qty .form-control::-webkit-outer-spin-button,
+.kn-qty .form-control::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.kn-qty-btn {
+  width: 2.6rem;
+  border: 0;
+  background: transparent;
+  color: var(--kn-ink);
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.kn-qty-btn:hover {
+  background-color: var(--kn-orange);
+  color: #fff7ec;
+}
+
+.kn-detail-form .btn-wa {
+  padding: 0.6rem 1.4rem;
+  font-size: 0.95rem;
+}
+
+.kn-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.kn-card-title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.kn-card-title a:hover {
+  color: var(--kn-orange-dark);
+}
+
+.kn-card-media-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* ---------- Checkout (keranjang) ---------- */
+.kn-checkout {
+  background-color: var(--kn-cream);
+  border: 1px solid var(--kn-line);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+}
+
+.kn-checkout-title {
+  font-family: "Unbounded", sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-bottom: 0.9rem;
+  color: var(--kn-ink);
+}
+
+.kn-checkout .form-check-input:checked {
+  background-color: var(--kn-orange);
+  border-color: var(--kn-orange);
+}
+
+.kn-summary {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.4rem 1rem;
+  margin: 0;
+  font-size: 0.92rem;
+}
+
+.kn-summary dt,
+.kn-summary dd {
+  margin: 0;
+}
+
+.kn-summary dt:last-of-type,
+.kn-summary dd:last-of-type {
+  border-top: 1px solid var(--kn-line);
+  padding-top: 0.5rem;
+  font-size: 1.02rem;
+}
+
+/* ---------- Profil: menu samping ---------- */
+.kn-profil-menu .list-group-item {
+  background-color: var(--kn-cream);
+  border-color: var(--kn-line);
+  color: var(--kn-ink);
+  font-weight: 600;
+}
+
+.kn-profil-menu .list-group-item.active {
+  background-color: var(--kn-orange);
+  border-color: var(--kn-orange);
+  color: #fff7ec;
+}

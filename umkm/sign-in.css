@@ -1,0 +1,322 @@
+/* =========================================================
+   Kopinako — Halaman masuk (login)
+   Memakai token warna & font dari home.css. Panel kiri dibuat
+   gelap seperti espresso dengan lingkaran noda cangkir; panel
+   kanan memuat form di atas kertas krem (ikut mode gelap).
+   ========================================================= */
+
+html,
+body.kn-auth {
+  height: auto;
+  min-height: 100%;
+}
+
+body.kn-auth {
+  margin: 0;
+}
+
+.kn-auth-shell {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+}
+
+/* ---------- Panel kiri ---------- */
+.kn-auth-art {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: clamp(1.5rem, 4vw, 3rem);
+  background-color: #1c0f06;
+  color: #fff7ec;
+  isolation: isolate;
+}
+
+/* Lingkaran noda dasar cangkir, keluar dari pojok kanan bawah */
+.kn-auth-art::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    repeating-radial-gradient(
+      circle at 92% 104%,
+      transparent 0 58px,
+      rgba(255, 90, 31, 0.5) 58px 61px,
+      transparent 61px 118px,
+      rgba(255, 90, 31, 0.22) 118px 120px
+    );
+}
+
+/* Satu lingkaran magenta sebagai aksen */
+.kn-auth-art::after {
+  content: "";
+  position: absolute;
+  right: -90px;
+  bottom: -90px;
+  width: 360px;
+  height: 360px;
+  border-radius: 50%;
+  border: 3px solid var(--kn-magenta);
+  z-index: -1;
+  opacity: 0.85;
+}
+
+.kn-auth-art .kn-brand {
+  color: #fff7ec;
+  text-decoration: none;
+  align-self: flex-start;
+}
+
+.kn-auth-copy {
+  max-width: 26rem;
+}
+
+.kn-auth-copy h2 {
+  font-family: "Unbounded", sans-serif;
+  font-weight: 600;
+  font-size: clamp(1.75rem, 3.2vw, 2.75rem);
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+  margin: 0 0 1rem;
+}
+
+.kn-auth-copy p {
+  margin: 0;
+  font-size: 1.02rem;
+  line-height: 1.6;
+  color: rgba(255, 247, 236, 0.78);
+  max-width: 24rem;
+}
+
+/* ---------- Panel kanan ---------- */
+.kn-auth-main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(1.5rem, 5vw, 3.5rem);
+  background-color: var(--kn-paper);
+}
+
+.kn-auth-card {
+  width: 100%;
+  max-width: 24rem;
+}
+
+.kn-auth-back {
+  display: inline-block;
+  margin-bottom: 2.25rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--kn-ink-soft);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+.kn-auth-back:hover,
+.kn-auth-back:focus-visible {
+  color: var(--kn-orange-dark);
+  border-bottom-color: currentColor;
+}
+
+.kn-auth-title {
+  font-family: "Unbounded", sans-serif;
+  font-weight: 700;
+  font-size: 2rem;
+  letter-spacing: -0.01em;
+  color: var(--kn-ink);
+  margin: 0 0 0.4rem;
+}
+
+.kn-auth-sub {
+  color: var(--kn-ink-soft);
+  margin: 0 0 1.75rem;
+}
+
+/* ---------- Pesan error ---------- */
+.kn-auth-error {
+  margin-bottom: 1.25rem;
+  padding: 0.8rem 1rem;
+  border-radius: 12px;
+  border-left: 4px solid var(--kn-magenta);
+  background-color: rgba(255, 47, 126, 0.1);
+  color: var(--kn-ink);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+/* ---------- Form ---------- */
+.kn-auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.kn-field label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--kn-ink);
+}
+
+.kn-field input {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  font: inherit;
+  color: var(--kn-ink);
+  background-color: var(--kn-cream);
+  border: 1.5px solid var(--kn-line);
+  border-radius: 14px;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.kn-field input::placeholder {
+  color: var(--kn-ink-soft);
+  opacity: 0.7;
+}
+
+.kn-field input:hover {
+  border-color: var(--kn-ink-soft);
+}
+
+.kn-field input:focus {
+  outline: none;
+  border-color: var(--kn-orange);
+  box-shadow: 0 0 0 4px rgba(255, 90, 31, 0.22);
+}
+
+.kn-field input[aria-invalid="true"] {
+  border-color: var(--kn-magenta);
+}
+
+.kn-field-pass {
+  position: relative;
+}
+
+.kn-field-pass input {
+  padding-right: 6.25rem;
+}
+
+.kn-pass-toggle {
+  position: absolute;
+  top: 50%;
+  right: 0.5rem;
+  transform: translateY(-50%);
+  padding: 0.35rem 0.7rem;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--kn-orange-dark);
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.kn-pass-toggle:hover {
+  background-color: rgba(255, 90, 31, 0.12);
+}
+
+.kn-pass-toggle:focus-visible {
+  outline: 2px solid var(--kn-orange);
+  outline-offset: 1px;
+}
+
+.kn-auth-submit {
+  width: 100%;
+  margin-top: 0.4rem;
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+}
+
+.kn-auth-submit:focus-visible {
+  outline: 3px solid var(--kn-ink);
+  outline-offset: 3px;
+}
+
+.kn-auth-foot {
+  margin: 1.75rem 0 0;
+  font-size: 0.92rem;
+  color: var(--kn-ink-soft);
+}
+
+.kn-auth-foot a {
+  font-weight: 700;
+  color: var(--kn-orange-dark);
+}
+
+/* ---------- Mode gelap: kertas jadi gelap, panel kiri dipisah garis ---------- */
+[data-bs-theme="dark"] .kn-auth-art {
+  border-right: 1px solid var(--kn-line);
+}
+
+/* ---------- Layar kecil: panel kiri jadi pita di atas ---------- */
+@media (max-width: 767.98px) {
+  .kn-auth-shell {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+  }
+
+  .kn-auth-art {
+    gap: 1rem;
+    padding: 1.25rem 1.25rem 1.5rem;
+  }
+
+  .kn-auth-art::after {
+    width: 200px;
+    height: 200px;
+    right: -70px;
+    bottom: -100px;
+  }
+
+  .kn-auth-copy h2 {
+    font-size: 1.35rem;
+    margin-bottom: 0;
+  }
+
+  .kn-auth-copy p {
+    display: none;
+  }
+
+  .kn-auth-main {
+    align-items: flex-start;
+    padding-top: 1.75rem;
+  }
+
+  .kn-auth-back {
+    margin-bottom: 1.25rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kn-field input {
+    transition: none;
+  }
+}
+
+/* ---------- Tambahan untuk halaman daftar ---------- */
+.kn-auth-ok {
+  margin-bottom: 1.25rem;
+  padding: 0.8rem 1rem;
+  border-radius: 12px;
+  border-left: 4px solid #3f9b2a;
+  background-color: rgba(63, 155, 42, 0.12);
+  color: var(--kn-ink);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.kn-field-hint {
+  margin: 0.4rem 0 0;
+  font-size: 0.82rem;
+  color: var(--kn-ink-soft);
+}
+
+/* Form daftar lebih panjang: rapatkan sedikit supaya muat di layar laptop */
+.kn-auth-form {
+  gap: 1rem;
+}
